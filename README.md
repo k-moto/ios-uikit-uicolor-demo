@@ -37,6 +37,7 @@ NSObject
 
 |メソッド名|説明|サンプル|
 |---|---|---|
+|withAlphaComponent(_:) | 透過度を設定する| self.color = color.withAlphaComponent(0.5) |
 |setFill() | 塗りつぶし操作の色を、レシーバが表す色に設定する| fillColor.setFill() |
 
 ## フレームワーク
