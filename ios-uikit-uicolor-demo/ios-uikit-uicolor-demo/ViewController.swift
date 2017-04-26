@@ -10,11 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var sampleView: UIView!
-    @IBOutlet weak var imageView: UIImageView!
-    
-    let ciColor: CIColor = CIColor(color: #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1))
-    var cgColor: CGColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
+    @IBOutlet private weak var sampleView: UIView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var isRedButton: UIButton!
+
+    let ciColor = CIColor(color: #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1))
+    var cgColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
     
     var color: UIColor?
     
@@ -37,12 +38,12 @@ class ViewController: UIViewController {
     
     /// 定義済みの色を使用してUIColorオブジェクト生成する
     private func predefinedColor() {
-        color = UIColor.blue
+        color = .blue
     }
     
     /// rgbαの値を指定してUIColorオブジェクトを生成する
     private func customColor() {
-        color = UIColor.init(colorLiteralRed: 1.0, green: 0.9, blue: 0, alpha: 1.0)
+        color = UIColor(colorLiteralRed: 1.0, green: 0.9, blue: 0, alpha: 1.0)
     }
     
     /// パターンを使用してUIColorオブジェクトを生成する
@@ -50,17 +51,17 @@ class ViewController: UIViewController {
     /// タイル状に繰り返し表示される
     private func patternImage() {
         guard let image = UIImage(named: "Dog") else { return }
-        color = UIColor.init(patternImage: image)
+        color = UIColor(patternImage: image)
     }
     
     /// CIColorからUIColorオブジェクトを生成する
     private func createFromCiColor() {
-        color = UIColor.init(ciColor: self.ciColor)
+        color = UIColor(ciColor: ciColor)
     }
     
     /// CGColorからUIColorオブジェクトを生成する
     private func createFromCgColor() {
-        color = UIColor.init(cgColor: self.cgColor)
+        color = UIColor(cgColor: cgColor)
     }
     
     //MARK:- UIColorオブジェクトの編集
@@ -86,5 +87,26 @@ class ViewController: UIViewController {
         imageView.image = image
         imageView.isHidden = false
     }
+
+    // MARK: - UIColorを比較する
+
+    /// 引数の色が赤かどうか
+    private func isRed(color: UIColor) -> Bool {
+        return color == .red
+    }
+
+    @IBAction private func didTapIsRedButton(_ sender: UIButton) {
+
+        /*
+         引数の色を変えて動作確認
+         */
+        print("背景色比較: \(isRed(color: sender.backgroundColor!))")
+
+        let rgbaColor = UIColor(colorLiteralRed: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        print("rgbaで作成した色と比較: \(isRed(color: rgbaColor))")
+
+        print("定義済みの色と比較: \(isRed(color: .red))")
+    }
+
 }
 
