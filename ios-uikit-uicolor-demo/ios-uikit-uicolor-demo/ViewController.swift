@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     
     /// 定義済みの色を使用してUIColorオブジェクト生成する
     private func predefinedColor() {
-        color = .blue
+        color = .red
     }
     
     /// rgbαの値を指定してUIColorオブジェクトを生成する
