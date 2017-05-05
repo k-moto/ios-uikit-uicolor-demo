@@ -32,6 +32,7 @@ NSObject
 |clear | 透明のカラーオブジェクト | UIColor.clear |
 |black | 黒のカラーオブジェクト| UIColor.black |
 |red | 赤のカラーオブジェクト | UIColor.red |
+|darkText | 明るい背景用のテキストカラーオブジェクト | UIColor.darkText |
 
 ## 主要メソッド
 
