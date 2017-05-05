@@ -27,6 +27,10 @@ class ViewController: UIViewController {
         
         // output UIColor
         sampleView.backgroundColor = color
+        
+        // ボタンの色をdarkTextに変える
+        isRedButton.setTitleColor(.darkText, for: .normal)
+        
     }
     
     //MARK:- UIColorオブジェクトの生成
